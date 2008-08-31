@@ -6,8 +6,10 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import com.janus.models.Model;
+
 @SuppressWarnings("serial")
-public class View<E> extends JDialog {
+public abstract class View<E extends Model> extends JDialog {
 	private boolean completed;
 	
 	public View(JFrame parent, E entity) {
@@ -37,4 +39,9 @@ public class View<E> extends JDialog {
 	protected void setCompleted(boolean completed) {
 		this.completed = completed;
 	}
+	
+	/**
+	 * @return the results of the operation.
+	 */
+	public abstract E getResult();
 }

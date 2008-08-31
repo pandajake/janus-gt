@@ -32,8 +32,6 @@ public class TripViewWidget extends javax.swing.JPanel {
         fieldTripcode = new javax.swing.JTextField();
         fieldCalendar = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        radioInbound = new javax.swing.JRadioButton();
-        radioOutbound = new javax.swing.JRadioButton();
         jLabel5 = new javax.swing.JLabel();
         fieldBlock = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -42,6 +40,7 @@ public class TripViewWidget extends javax.swing.JPanel {
         buttonOK = new javax.swing.JButton();
         listPattern = new javax.swing.JComboBox();
         jLabel7 = new javax.swing.JLabel();
+        listDirection = new javax.swing.JComboBox();
 
         jLabel1.setFont(jLabel1.getFont().deriveFont(jLabel1.getFont().getStyle() | java.awt.Font.BOLD));
         jLabel1.setText("Trip");
@@ -49,11 +48,6 @@ public class TripViewWidget extends javax.swing.JPanel {
         jLabel2.setText("Tripcode");
 
         jLabel3.setText("Calendar Code");
-
-        radioInbound.setSelected(true);
-        radioInbound.setText("Inbound");
-
-        radioOutbound.setText("Outbound");
 
         jLabel5.setText("Direction");
 
@@ -86,15 +80,13 @@ public class TripViewWidget extends javax.swing.JPanel {
                             .addComponent(jLabel7)
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(listPattern, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(fieldCalendar, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(fieldTripcode, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
-                            .addComponent(fieldBlock)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(radioInbound)
-                                .addGap(18, 18, 18)
-                                .addComponent(radioOutbound))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(listDirection, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(listPattern, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(fieldCalendar)
+                                .addComponent(fieldTripcode, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                                .addComponent(fieldBlock, javax.swing.GroupLayout.Alignment.LEADING))))
                     .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -113,11 +105,10 @@ public class TripViewWidget extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fieldCalendar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(radioOutbound, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(radioInbound, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(7, 7, 7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(listDirection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fieldBlock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -128,7 +119,7 @@ public class TripViewWidget extends javax.swing.JPanel {
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonCancel)
                     .addComponent(buttonOK))
@@ -151,9 +142,8 @@ public class TripViewWidget extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JComboBox listDirection;
     private javax.swing.JComboBox listPattern;
-    private javax.swing.JRadioButton radioInbound;
-    private javax.swing.JRadioButton radioOutbound;
     // End of variables declaration//GEN-END:variables
 
     public javax.swing.JButton getButtonCancel() {
@@ -175,17 +165,13 @@ public class TripViewWidget extends javax.swing.JPanel {
     public javax.swing.JTextField getFieldTripcode() {
         return fieldTripcode;
     }
-
-    public javax.swing.JRadioButton getRadioInbound() {
-        return radioInbound;
-    }
-
-    public javax.swing.JRadioButton getRadioOutbound() {
-        return radioOutbound;
-    }
-
+    
     public javax.swing.JComboBox getListPattern() {
         return listPattern;
+    }
+
+    public javax.swing.JComboBox getListDirection() {
+        return listDirection;
     }
 
 }

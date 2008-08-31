@@ -1,6 +1,6 @@
 package com.janus.models;
 
-public class PatternStop {
+public class PatternStop extends Model {
 	public enum ServiceType {
 		REGULAR(0),
 		NO_SERVICE(1),

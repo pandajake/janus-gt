@@ -10,7 +10,7 @@ package com.janus.models;
  * 
  * @author William Adama
  */
-public class Trip {
+public class Trip extends Model {
 	public enum Direction {
 		INBOUND(0),
 		OUTBOUND(1);
@@ -34,14 +34,14 @@ public class Trip {
 	
 	public Trip(String id,
 			String calendar,
-			Pattern pattern,
+			Direction direction,
 			String block,
-			Direction direction) {
+			Pattern pattern) {
 		setId(id);
 		setCalendar(calendar);
-		setPattern(pattern);
-		setBlock(block);
 		setDirection(direction);
+		setBlock(block);
+		setPattern(pattern);
 	}
 
 	/**

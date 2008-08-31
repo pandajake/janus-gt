@@ -2,7 +2,7 @@ package com.janus.models;
 
 import java.util.List;
 
-public class Pattern {
+public class Pattern extends Model {
 	private String name;
 	private String headsign;
 	private String shape;
@@ -106,5 +106,10 @@ public class Pattern {
 	 */
 	public void setTimes(List<String> times) {
 		this.times = times;
+	}
+	
+	@Override
+	public String toString() {
+		return name;
 	}
 }
