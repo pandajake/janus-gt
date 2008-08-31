@@ -7,7 +7,7 @@ package com.janus.models;
  * 
  * @author phoebus12@gmail.com
  */
-public class Stop {
+public class Stop extends Model {
 	private String id;
 	private String name;
 	private String hiddenName;
@@ -153,5 +153,15 @@ public class Stop {
 	public void setZoneId(String zoneId) {
 		Model.checkOptional("Zone ID", zoneId);
 		this.zoneId = zoneId;
+	}
+	
+	@Override
+	public String toString() {
+		String answer = "" + name;
+		if(hiddenName.length() > 0) {
+			answer += " (" + hiddenName + ")";
+		}
+		answer += " (" + id + ")";
+		return answer;
 	}
 }

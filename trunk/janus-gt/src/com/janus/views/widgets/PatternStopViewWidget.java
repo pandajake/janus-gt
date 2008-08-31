@@ -40,6 +40,8 @@ public class PatternStopViewWidget extends javax.swing.JPanel {
         checkIsTimepoint = new javax.swing.JCheckBox();
         buttonOK = new javax.swing.JButton();
         buttonCancel = new javax.swing.JButton();
+        spinnerArrivalOffset = new javax.swing.JSpinner();
+        jLabel6 = new javax.swing.JLabel();
 
         jLabel1.setFont(jLabel1.getFont().deriveFont(jLabel1.getFont().getStyle() | java.awt.Font.BOLD));
         jLabel1.setText("Pattern Stop");
@@ -58,6 +60,10 @@ public class PatternStopViewWidget extends javax.swing.JPanel {
 
         buttonCancel.setText("Cancel");
 
+        spinnerArrivalOffset.setEnabled(false);
+
+        jLabel6.setText("Arrival Time Offset");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -65,7 +71,12 @@ public class PatternStopViewWidget extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(checkIsTimepoint)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(checkIsTimepoint)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(spinnerArrivalOffset, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
                     .addComponent(jLabel1)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -115,7 +126,10 @@ public class PatternStopViewWidget extends javax.swing.JPanel {
                     .addComponent(fieldHeadsign, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(checkIsTimepoint)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(checkIsTimepoint)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spinnerArrivalOffset, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -137,11 +151,13 @@ public class PatternStopViewWidget extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JComboBox listDropOff;
     private javax.swing.JComboBox listPickup;
     private javax.swing.JComboBox listStop;
+    private javax.swing.JSpinner spinnerArrivalOffset;
     // End of variables declaration//GEN-END:variables
 
     public javax.swing.JButton getButtonCancel() {
@@ -170,6 +186,10 @@ public class PatternStopViewWidget extends javax.swing.JPanel {
 
     public javax.swing.JComboBox getListStop() {
         return listStop;
+    }
+
+    public javax.swing.JSpinner getSpinnerArrivalOffset() {
+        return spinnerArrivalOffset;
     }
 
 }

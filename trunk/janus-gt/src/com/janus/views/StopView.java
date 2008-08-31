@@ -95,4 +95,9 @@ public class StopView extends View<Stop> implements ActionListener {
 			save();
 		}
 	}
+
+	@Override
+	public Stop getResult() {
+		return entity;
+	}
 }
