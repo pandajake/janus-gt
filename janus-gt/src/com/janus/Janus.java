@@ -3,6 +3,7 @@ package com.janus;
 
 import java.awt.Component;
 import java.awt.GridLayout;
+import java.awt.Window;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
@@ -16,9 +17,12 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
 
+import com.janus.data.DataStore;
+import com.janus.models.Pattern;
 import com.janus.models.Stop;
 import com.janus.models.Trip;
 import com.janus.views.ListView;
+import com.janus.views.PatternView;
 import com.janus.views.StopView;
 import com.janus.views.TripView;
 
@@ -54,6 +58,7 @@ public class Janus {
 			"\""+ ERROR_LOG.getName() + "\" and follow the directions in that file.";
 	
 	private JFrame window;
+	private DataStore data;
 	
 	@SuppressWarnings("serial")
 	public Janus(JFrame window) {
@@ -80,20 +85,63 @@ public class Janus {
 		System.err.println("");
 		
 		// read data package
+		// FIXME: make this do something, for real real.
+		data = new DataStore(new ArrayList<Stop>(),
+				new ArrayList<Pattern>(),
+				new ArrayList<Trip>());
 		// create GUI
 		JTabbedPane pane = new JTabbedPane();
-		pane.addTab("Stops", new ListView<StopView, Stop>(window, "Stops", new ArrayList<Stop>()) {
+		// stops pane
+		pane.addTab("Stops", new ListView<StopView, Stop>(window, "Stops", data, data.getStops()) {
 			@Override
-			public StopView create(JFrame frame, Stop entity) {
-				return new StopView(frame, entity);
+			public StopView create(Window window, Stop entity) {
+				return new StopView(window, data, entity) ;
+			}
+
+			@Override
+			public void addElement(Stop entity) {
+				data.getStops().add(entity);
+			}
+
+			@Override
+			public void removeElement(Stop entity) {
+				data.getStops().remove(entity);
 			}
 		});
-		//pane.addTab("Trips", new ListView<TripView, Trip>(window, "Trips", new ArrayList<Trip>()) {
-		//	@Override
-		//	public TripView create(JFrame frame, Trip entity) {
-		//		return new TripView(frame, entity);
-		//	}
-		//});
+		// patterns pane
+		pane.addTab("Patterns", new ListView<PatternView, Pattern>(window, "Patterns", data, data.getPatterns()) {
+			@Override
+			public PatternView create(Window window, Pattern entity) {
+				return new PatternView(window, data, entity);
+			}
+			
+			@Override
+			public void addElement(Pattern entity) {
+				data.getPatterns().add(entity);
+			}
+
+			@Override
+			public void removeElement(Pattern entity) {
+				data.getPatterns().remove(entity);
+			}
+		});
+		// trips pane
+		pane.addTab("Trips", new ListView<TripView, Trip>(window, "Trips", data, data.getTrips()) {
+			@Override
+			public TripView create(Window window, Trip entity) {
+				return new TripView(window, data, entity);
+			}
+			
+			@Override
+			public void addElement(Trip entity) {
+				data.getTrips().add(entity);
+			}
+
+			@Override
+			public void removeElement(Trip entity) {
+				data.getTrips().remove(entity);
+			}
+		});
 		// assign and display.
 		window.setLayout(new GridLayout(1, 1));
 		window.add(pane);

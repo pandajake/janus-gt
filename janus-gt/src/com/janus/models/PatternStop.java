@@ -27,19 +27,22 @@ public class PatternStop extends Model {
 	private boolean timepoint;
 	private ServiceType pickup;
 	private ServiceType dropoff;
+	private int arrivalOffset;
 	
-	private PatternStop(Stop stop,
-			String headsign,
-			int sequence,
-			boolean timepoint,
+	public PatternStop(Stop stop,
 			ServiceType pickup,
-			ServiceType dropoff) {
+			ServiceType dropoff,
+			String headsign,
+			boolean timepoint,
+			int arrivalOffset,
+			int sequence) {
 		setStop(stop);
 		setHeadsign(headsign);
 		setSequence(sequence);
 		setTimepoint(timepoint);
 		setPickup(pickup);
 		setDropoff(dropoff);
+		setArrivalOffset(arrivalOffset);
 	}
 	
 	/**
@@ -113,5 +116,19 @@ public class PatternStop extends Model {
 	 */
 	public void setDropoff(ServiceType dropoff) {
 		this.dropoff = dropoff;
+	}
+
+	/**
+	 * @return the arrivalOffset
+	 */
+	public int getArrivalOffset() {
+		return arrivalOffset;
+	}
+
+	/**
+	 * @param arrivalOffset the arrivalOffset to set
+	 */
+	public void setArrivalOffset(int arrivalOffset) {
+		this.arrivalOffset = arrivalOffset;
 	}
 }

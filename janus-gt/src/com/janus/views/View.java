@@ -1,19 +1,22 @@
 package com.janus.views;
 
 import java.awt.GridLayout;
+import java.awt.Window;
 
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import com.janus.data.DataStore;
 import com.janus.models.Model;
 
 @SuppressWarnings("serial")
 public abstract class View<E extends Model> extends JDialog {
+	private DataStore data;
 	private boolean completed;
 	
-	public View(JFrame parent, E entity) {
-		super(parent);
+	public View(Window window, DataStore data, E entity) {
+		super(window);
+		this.data = data;
 		completed = false;
 		this.setModal(true);
 		this.setLayout(new GridLayout(1, 1));
@@ -44,4 +47,11 @@ public abstract class View<E extends Model> extends JDialog {
 	 * @return the results of the operation.
 	 */
 	public abstract E getResult();
+
+	/**
+	 * @return the data
+	 */
+	public DataStore getData() {
+		return data;
+	}
 }
