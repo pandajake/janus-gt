@@ -1,10 +1,10 @@
 package com.janus.views;
 
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-
+import com.janus.data.DataStore;
 import com.janus.models.Stop;
 import com.janus.views.widgets.StopViewWidget;
 
@@ -13,8 +13,8 @@ public class StopView extends View<Stop> implements ActionListener {
 	private StopViewWidget widget;
 	private Stop entity;
 	
-	public StopView(JFrame parent, Stop entity) {
-		super(parent, entity);
+	public StopView(Window window, DataStore data, Stop entity) {
+		super(window, data, entity);
 		this.entity = entity;
 		widget = new StopViewWidget();
 		widget.getButtonCancel().addActionListener(this);
@@ -24,7 +24,7 @@ public class StopView extends View<Stop> implements ActionListener {
 		this.pack();
 		this.setVisible(true);
 	}
-	
+
 	private void incorporate(Stop entity) {
 		if(entity == null) {
 			// creating fresh entity.

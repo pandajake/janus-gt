@@ -1,12 +1,12 @@
 package com.janus.views;
 
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JFrame;
 
+import com.janus.data.DataStore;
 import com.janus.models.Pattern;
 import com.janus.models.Trip;
 import com.janus.views.widgets.TripViewWidget;
@@ -16,14 +16,14 @@ public class TripView extends View<Trip> implements ActionListener {
 	private TripViewWidget widget;
 	private Trip entity;
 	
-	public TripView(JFrame parent, Trip entity, List<Pattern> patterns) {
-		super(parent, entity);
+	public TripView(Window window, DataStore data, Trip entity) {
+		super(window, data, entity);
 		this.entity = entity;
 		widget = new TripViewWidget();
 		widget.getButtonCancel().addActionListener(this);
 		widget.getButtonOK().addActionListener(this);
 		widget.getListDirection().setModel(new DefaultComboBoxModel(Trip.Direction.values()));
-		widget.getListPattern().setModel(new DefaultComboBoxModel(patterns.toArray()));
+		widget.getListPattern().setModel(new DefaultComboBoxModel(getData().getPatterns().toArray()));
 		incorporate(entity);
 		this.add(widget);
 		this.pack();

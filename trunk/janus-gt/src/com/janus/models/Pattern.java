@@ -1,5 +1,6 @@
 package com.janus.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Pattern extends Model {
@@ -14,14 +15,13 @@ public class Pattern extends Model {
 			String headsign,
 			String shape,
 			String route,
-			List<PatternStop> stops,
-			List<String> times) {
+			List<PatternStop> stops) {
 		setName(name);
 		setHeadsign(headsign);
 		setShape(shape);
 		setRoute(route);
 		setStops(stops);
-		setTimes(times);
+		setTimes(new ArrayList<String>());
 	}
 
 	/**

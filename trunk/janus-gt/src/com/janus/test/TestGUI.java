@@ -19,7 +19,7 @@ public class TestGUI {
 		invoker.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				StopView view = new StopView(window, null);
+				StopView view = new StopView(window, null, null);
 				System.err.println(view.isCompleted());
 			}
 		});
