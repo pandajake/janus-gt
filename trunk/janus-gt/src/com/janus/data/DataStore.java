@@ -10,6 +10,7 @@ import java.util.Scanner;
 import com.janus.Janus;
 import com.janus.controllers.PatternController;
 import com.janus.controllers.PatternStopController;
+import com.janus.controllers.TripController;
 import com.janus.models.Pattern;
 import com.janus.models.PatternStop;
 import com.janus.models.Trip;
@@ -78,7 +79,37 @@ public class DataStore {
 			patternsTemp.add(patternMap.get(key));
 		}
 		patterns = patternsTemp;
-		//
-		System.out.println();
+		// do all trips
+		trips = new ArrayList<Trip>();
+		while(tripsIn.hasNextLine()) {
+			Trip read = TripController.create(patternMap, tripsIn.nextLine());
+			if(read == null) {
+				System.out.println("FAILURE: Unrecoverable failure, stopping further processing.");
+				return;
+			}
+			trips.add(read);
+		}
+		valid = true;
+	}
+
+	/**
+	 * @return the valid
+	 */
+	public boolean isValid() {
+		return valid;
+	}
+
+	/**
+	 * @return the patterns
+	 */
+	public List<Pattern> getPatterns() {
+		return patterns;
+	}
+
+	/**
+	 * @return the trips
+	 */
+	public List<Trip> getTrips() {
+		return trips;
 	}
 }

@@ -125,4 +125,17 @@ public class Pattern {
 	public void setStops(List<PatternStop> stops) {
 		this.stops = stops;
 	}
+	
+	/**
+	 * @return the number of timepoints specified for this pattern.
+	 */
+	public int getNumberOfTimepoints() {
+		int count = 0;
+		for(PatternStop stop : getStops()) {
+			if(stop.isTimepoint()) {
+				count++;
+			}
+		}
+		return count;
+	}
 }

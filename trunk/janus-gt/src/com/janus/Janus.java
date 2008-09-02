@@ -1,10 +1,9 @@
 package com.janus;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
 
 import com.janus.data.DataStore;
+import com.janus.data.DataWriter;
 
 public class Janus {
 	public static final File INPUT_DIRECTORY = new File("input");
@@ -15,7 +14,7 @@ public class Janus {
 	public static final File STOP_TIMES_OUTPUT = new File("output/stop_times.txt");
 	public static final File TRIPS_OUTPUT = new File("output/trips.txt");
 	
-	private static final String HEADER = "Janus GT 0.1a";
+	private static final String HEADER = "Janus GT 0.1b";
 	
 	public static void main(String[] args) {
 		new Janus();
@@ -47,5 +46,16 @@ public class Janus {
 		DataStore data = new DataStore(PATTERNS_INPUT,
 				PATTERN_STOPS_INPUT,
 				TRIPS_INPUT);
+		if(data.isValid()) {
+			System.out.println("Data appears to be valid, writing...");
+			boolean status = DataWriter.write(data, STOP_TIMES_OUTPUT, TRIPS_OUTPUT);
+			if(status) {
+				System.out.println("DONE!!!");
+			} else {
+				System.out.println("WARNING: Errors were generated, please correct and rerun.");
+			}
+		} else {
+			System.out.println("FAILURE: Errors occured, please correct and retry.");
+		}
 	}
 }
