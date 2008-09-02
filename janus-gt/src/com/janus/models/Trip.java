@@ -1,19 +1,24 @@
 package com.janus.models;
 
+import java.util.List;
+
 public class Trip {
 	private String id;
 	private String calendar;
 	private Pattern pattern;
 	private String block;
+	private List<Time> times;
 	
 	public Trip(Pattern pattern,
 			String id,
 			String calendar,
-			String block) {
+			String block,
+			List<Time> times) {
 		setId(id);
 		setCalendar(calendar);
 		setPattern(pattern);
 		setBlock(block);
+		setTimes(times);
 	}
 
 	/**
@@ -70,5 +75,19 @@ public class Trip {
 	 */
 	public void setBlock(String block) {
 		this.block = block;
+	}
+
+	/**
+	 * @return the times
+	 */
+	public List<Time> getTimes() {
+		return times;
+	}
+
+	/**
+	 * @param times the times to set
+	 */
+	public void setTimes(List<Time> times) {
+		this.times = times;
 	}
 }
